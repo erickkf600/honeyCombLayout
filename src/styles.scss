@@ -1,0 +1,80 @@
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == "device" {
+      @media (min-width: 576px) {
+        @content;
+      }
+    } @else if $breakpoint == "small" {
+      // 767px
+      @media (min-width: 767px) {
+        @content;
+      }
+    } @else if $breakpoint == "medium" {
+      @media (min-width: 992px) {
+        @content;
+      }
+    } @else if $breakpoint == "large" {
+      @media (min-width: 1200px) {
+        @content;
+      }
+    }@else if $breakpoint == "extra-large" {
+      @media (min-width: 1500px) {
+        @content;
+      }
+    }
+  }
+
+
+*, html, body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    // .desktop{
+    //     display: none;
+    //     @include respond-to('large'){
+    //         display: block;
+    //     }
+    // }
+    .svg-desktop { 
+    background: #fff; 
+    min-height: 100vh;
+    position: relative;
+    }
+    polygon { 
+    fill: #fff; 
+    stroke-width: .15;
+    stroke: #000;
+    }
+    .logos{
+        width: 160px;
+        height: 160px;
+        display: none;
+        @include respond-to('large'){
+            display: block;
+        }
+    }
+   
+    .mobile{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        width: 100%;  
+        height: 350px;
+        margin-top: 22px;
+        display: block;
+        @include respond-to('large'){
+          display: none;
+        }
+        svg{
+          background: transparent;
+          width: 160px !important;
+          top: 63px;
+          overflow-x: auto;
+        .logos-mobile{
+           width: 160px;
+           height: 160px;
+        } 
+    }
+  }

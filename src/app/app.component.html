@@ -1,0 +1,52 @@
+<div class="desktop">
+  <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" class="svg-desktop">
+    <defs>
+      <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse"
+        patternTransform="scale(7) translate(2) rotate(90)">
+        <polygon points="24.8,22 37.3,29.2 37.3,43.7 24.8,50.9 12.3,43.7 12.3,29.2" id="hex"/>
+        <use xlink:href="#hex" x="25" />
+        <use xlink:href="#hex" x="-25" />
+        <use xlink:href="#hex" x="12.5" y="-21.7" />
+        <use xlink:href="#hex" x="-12.5" y="-21.7" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hexagons)"  />
+    <g class="clients-logos">
+      <image 
+        *ngFor="let logo of logos; let i = index"
+        [attr.x]="axisXArray[i]"
+        [attr.y]="axisYArray[i]"
+        class="logos" 
+        [attr.xlink:href]="logo.img" />
+  
+    </g>
+  </svg>
+  
+</div>
+
+
+<!-- mobile -->
+  <div class="mobile">
+    <swiper [config]="config" [(index)]="index">
+    <ng-container *ngFor="let logo of logos; let i = index">
+      <svg xmlns:xlink="http://www.w3.org/1999/xlink" >
+          <image 
+            class="logos-mobile"
+            [attr.xlink:href]="logo.img" />
+      </svg>
+    </ng-container>
+        </swiper>
+    
+    <!-- <div class="mobile-slide">
+      <swiper [config]="config" [(index)]="index">
+        <ng-container *ngFor="let logo of logos; let i = index">
+          <img 
+            [src]="logo.img" 
+            class="logo-mobile" 
+            [style.left.px]="axisXArray[i]"
+            [style.top.px]="axisYArray[i]"
+          />
+        </ng-container>
+      </swiper>
+    </div> -->
+  </div>
